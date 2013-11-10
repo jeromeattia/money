@@ -1,0 +1,29 @@
+.row
+  %h3 Identification
+  - if current_user
+    %h1 User Profile
+    %p
+      %strong Name:
+      = current_user.name
+    %p
+      %strong Provider:
+      = current_user.provider
+    %p
+      %strong OmniAuth UID:
+      = current_user.uid
+    p>
+    %strong OmniAuth UID:
+    = current_user.email
+    %p= link_to "Log out", signout_path
+  - else
+    .small-4.small-offset-1.columns
+      = form_tag "/auth/identity/callback" do
+        .field
+          = label_tag :auth_key, "Email"
+          = text_field_tag :auth_key
+        .field
+          = label_tag :password
+          = password_field_tag :password
+        .actions= submit_tag "Connection", :class => "button"
+    .small-6.columns
+      /= image_tag("campfire.png")

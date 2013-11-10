@@ -1,0 +1,1 @@
+web: bundle exec unicorn_rails -Eproduction -p 5000 -c ./config/unicorn.rb
