@@ -1,7 +1,30 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# encoding: UTF-8
+Identity.create(name: 'badji', email: "riad.badji@orange.fr", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'berthet', email: "berthetmc@orange.fr", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'boutelant', email: "apiaski@free.fr", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'gallazzini', email: "cyrilgallazzini@yahoo.fr", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'gattaz', email: "francoise@gattaz.com", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'girard', email: "dr.girardo@orange.fr", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'huraux', email: "hurauxc@gmail.com", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'mahiou', email: "mahiou.philippe@wanadoo.fr", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'maze', email: "steve.maze@wanadoo.fr", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'veyrac', email: "philippe.veyrac@wanadoo.fr", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'boulleau', email: "benjaminboulleau@yahoo.fr", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'laurent', email: "delphinelagrange@yahoo.fr", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'albertini', email: "sergealbertini@gmail.com", password: "anesth", password_confirmation: "anesth")
+Identity.create(name: 'attia', email: "doc.jerome.attia@gmail.com", password: "anesth", password_confirmation: "anesth")
+
+User.create(name: 'badji', email: "riad.badji@orange.fr" )
+User.create(name: 'berthet', email: "berthetmc@orange.fr")
+User.create(name: 'boutelant', email: "apiaski@free.fr"  )
+User.create(name: 'gallazzini', email: "cyrilgallazzini@yahoo.fr")
+User.create(name: 'gattaz', email: "francoise@gattaz.com")
+User.create(name: 'girard', email: "dr.girardo@orange.fr")
+User.create(name: 'huraux', email: "hurauxc@gmail.com")
+User.create(name: 'mahiou', email: "mahiou.philippe@wanadoo.fr")
+User.create(name: 'maze', email: "steve.maze@wanadoo.fr")
+User.create(name: 'veyrac', email: "philippe.veyrac@wanadoo.fr")
+User.create(name: 'boulleau', email: "benjaminboulleau@yahoo.fr")
+User.create(name: 'laurent', email: "delphinelagrange@yahoo.fr")
+User.create(name: 'albertini', email: "sergealbertini@gmail.com")
+User.create(name: 'attia', email: "doc.jerome.attia@gmail.com")

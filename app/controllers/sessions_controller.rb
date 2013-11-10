@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if user && liste.include?(user.email)
       session[:user_id] = user.id
       sign_in user
-      redirect_to protocoles_path, notice: "Bienvenue #{user.name} !"
+      redirect_to users_path, notice: "Bienvenue #{user.name} !"
     else
       flash[:alert] = "Désolé, utilisateur inconnu - pas d'accés."
       user.delete
