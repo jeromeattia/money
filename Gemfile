@@ -10,6 +10,8 @@ gem 'dotenv-rails'
 gem "d3-rails"
 gem 'thin'
 gem 'gravatar_image_tag'
+gem 'bcrypt-ruby'  , '~> 3.0.0'
+
 group :production do
   gem 'unicorn'
 end
@@ -20,7 +22,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails' # you need this or you get an err
   gem 'zurb-foundation', '~> 4.0.0'
-  gem 'jquery-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 
