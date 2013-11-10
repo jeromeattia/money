@@ -15,7 +15,7 @@ require 'digest'
 
 class User < ActiveRecord::Base
   has_many :protocoles
-  attr_accessible :name
+  attr_accessible :name, :email
 
   validates :name,  :presence => true,
                     :length   => { :maximum => 50 }
