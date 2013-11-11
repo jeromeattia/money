@@ -11,6 +11,7 @@ gem "d3-rails"
 gem 'thin'
 gem 'gravatar_image_tag'
 gem 'bcrypt-ruby'  , '~> 3.0.0'
+gem "highcharts-rails", "~> 3.0.0"
 
 group :production do
   gem 'unicorn'

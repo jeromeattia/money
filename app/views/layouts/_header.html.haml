@@ -1,0 +1,30 @@
+%nav.top-bar
+  %ul.title-area
+    / Title Area
+    %li.name
+      %h1
+        %a{href: "#"} MoneyMoney
+    / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+    %li.toggle-topbar.menu-icon
+      %a{href: "#"}
+        %span Menu
+  %section.top-bar-section
+    / Left Nav Section
+    %ul.left
+      %li.divider
+      %li{:class => "#{'active' if current_page?(comptes_path)}"}
+        %a= link_to "Comptes", comptes_path
+      %li.divider
+         
+    / Right Nav Section
+    %ul.right
+      %li.has-dropdown
+        %a{href: "#"} Utilisateurs
+        %ul.dropdown
+          %li
+            %a= link_to "Options", edit_user_path(current_user)   unless current_user.nil?
+          %li
+            %a= link_to "Profil", current_user
+          %li
+            %a= link_to "Deconnection", signout_path, :method => :delete
+      %li.divider

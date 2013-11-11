@@ -1,4 +1,6 @@
 Money::Application.routes.draw do
+  get "comptes/index", :as => "comptes"
+
   resources :users
   resources :identities
   resources :sessions, :only => [:new, :create, :destroy]
