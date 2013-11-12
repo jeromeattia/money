@@ -12,22 +12,23 @@ Highcharts.setOptions({
    
     chart: { renderTo: 'container' },
     title: { text: 'virements mensuels' },
-    xAxis: { //type: 'datetime' ,
-          //    dateTimeLabelFormats: {
-           //     day: '%b %Y'
-           // },
-           },
+     xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },  
     yAxis: {
       title: { text: 'Euros'}
     },
     series: [
     {
       "index": 0,
+      name: '2013',
       type: 'column',
       data: $("#annual2013").data('lst2013'),
     },
      {
       "index": 1,
+      name: '2012',
       type: 'column',
       data: $("#annual2012").data('lst2012'),
     } ]

@@ -8,6 +8,6 @@ Money::Application.routes.draw do
   match '/signout',  :to => 'sessions#destroy' #,via: :delete
   match "/auth/:provider/callback", to: "sessions#create"
   match "/auth/failure", to: "sessions#failure"
-  root :to => "users", :action =>'index'
+  root :to => "comptes", :action =>'index'
   match '/:controller(/:action(/:id))'
 end
