@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class ComptesController < ApplicationController
   def index
+    #TODO: add a name item for finding by name
     @comptes = Compte.where(true)
     @liste_virt = Compte.where(true).each.map{|cp| cp.valeur.to_f }
     # @liste2013 = Compte.where(mois: ("2013-01-01".."2013-12-31")).each.map{|cp| [cp.mois.to_time.to_i*1000, cp.valeur.to_f]}
@@ -12,6 +13,7 @@ class ComptesController < ApplicationController
   end
 
   def list
+    #TODO: sort by date
     @comptes = Compte.where(true)
   end
 

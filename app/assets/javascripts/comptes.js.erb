@@ -12,18 +12,77 @@ Highcharts.setOptions({
     }
 });
 
+var myData2011  = $("#annual2011").data('lst2011');
+var myTotal2011 = 0;  //Variable to hold your total
+for(var i=0, len=myData2011.length; i<len; i++){
+    myTotal2011 += myData2011[i][1];  //Iterate over your first array and then grab the second element add the values up
+}
+var mean2011 = myTotal2011/myData2011.length
+
+var myData2012  = $("#annual2012").data('lst2012');
+var myTotal2012 = 0;  //Variable to hold your total
+for(var i=0, len=myData2012.length; i<len; i++){
+    myTotal2012 += myData2012[i][1];  //Iterate over your first array and then grab the second element add the values up
+}
+var mean2012 = myTotal2012/myData2012.length
+
+var myData2013  = $("#annual2013").data('lst2013');
+var myTotal2013 = 0;  //Variable to hold your total
+for(var i=0, len=myData2013.length; i<len; i++){
+    myTotal2013 += myData2013[i][1];  //Iterate over your first array and then grab the second element add the values up
+}
+var mean2013 = myTotal2013/myData2013.length
+
 if(document.getElementById('container')){
  $(function () {
   new Highcharts.Chart({
    
     chart: { renderTo: 'container' },
     title: { text: 'virements mensuels sur le compte de la Selarl du Dr Attia' },
+    subtitle: {
+            text: 'avec la moyenne ',
+        },
      xAxis: {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             },  
     yAxis: {
-      title: { text: 'Euros'}
+      title: { text: 'Euros'},
+       plotLines: [{
+                color:  '#8bbc21', 
+                width: 2,
+                value: mean2011,
+                label: {
+                    text: '2011',
+                    align: 'right',
+                    color:  '#8bbc21', 
+                    x: 0
+                }        
+            },
+            {
+                color: '#2f7ed8',
+                width: 2,
+                value: mean2012,
+                label: {
+                    text: '2012',
+                    align: 'right',
+                    color: '#2f7ed8',
+                    x: 0
+                }        
+            },
+            
+            {
+                color: '#0d233a', 
+                width: 2,
+                value: mean2013,
+                label: {
+                    text: '2013',
+                    align: 'right',
+                    color: '#0d233a', 
+                    x: 0,
+                    y: 10
+                }        
+            } ]
     },
     series: [
     {
@@ -36,23 +95,23 @@ if(document.getElementById('container')){
       "index": 2,
       name: '2013',
       type: 'column',
+      color: '#0d233a', 
       data: $("#annual2013").data('lst2013'),
     } ,
     {
       "index": 1,
       name: '2012',
       type: 'column',
+      color: '#2f7ed8', 
       data: $("#annual2012").data('lst2012'),
     },
      {
       "index": 0,
       name: '2011',
       type: 'column',
+      color:  '#8bbc21', 
       data: $("#annual2011").data('lst2011'),
     },
-    
-
-
     ]
   });
 });
