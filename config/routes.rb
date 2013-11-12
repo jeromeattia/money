@@ -1,8 +1,10 @@
 Money::Application.routes.draw do
-  get "comptes/index", :as => "comptes"
+
+  get '/comptes/list', to: 'comptes#list', as: 'list'
 
   resources :users
   resources :identities
+  resources :comptes
   resources :sessions, :only => [:new, :create, :destroy]
   match '/signin',   :to => 'sessions#new'
   match '/signout',  :to => 'sessions#destroy' #,via: :delete

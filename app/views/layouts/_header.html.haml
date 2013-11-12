@@ -15,7 +15,12 @@
       %li{:class => "#{'active' if current_page?(comptes_path)}"}
         %a= link_to "Comptes", comptes_path
       %li.divider
-         
+      %li{:class => "#{'active' if current_page?(new_compte_path)}"}
+        %a= link_to "Ajouter des data", new_compte_path
+      %li.divider   
+      %li{:class => "#{'active' if current_page?(list_path)}"}
+        %a= link_to "Lister les data", list_path
+      %li.divider  
     / Right Nav Section
     %ul.right
       %li.has-dropdown

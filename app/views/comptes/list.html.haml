@@ -1,0 +1,17 @@
+.row
+  .small-8.offset-1.columns
+    %h4 Dans liste
+    %table.table
+      %tr
+        %th 
+        %th
+        %th
+        %th
+        %th
+      - @comptes.each do |cpt|
+        %tr{:class => cycle('list-line-odd','line-list-even')}
+          %td= cpt.mois.strftime("%d/%m/%Y")
+          %td= cpt.nom
+          %td= cpt.valeur
+          %td= link_to 'Editer', edit_compte_path(cpt)
+          %td= link_to 'Supprimer', cpt, :confirm => 'Etes vous certain?', :method => :delete 

@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    $('#date-select1').fdatepicker({
+        format: 'dd-mm-yyyy'
+    });
+})
+
 Highcharts.setOptions({
     lang: {
         months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 
@@ -6,12 +12,12 @@ Highcharts.setOptions({
     }
 });
 
-
+if(document.getElementById('container')){
  $(function () {
   new Highcharts.Chart({
    
     chart: { renderTo: 'container' },
-    title: { text: 'virements mensuels' },
+    title: { text: 'virements mensuels sur le compte de la Selarl du Dr Attia' },
      xAxis: {
                 categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -21,16 +27,33 @@ Highcharts.setOptions({
     },
     series: [
     {
-      "index": 0,
+      "index": 3,
+      name: '2014',
+      type: 'column',
+      data: $("#annual2014").data('lst2014'),
+    },
+     {
+      "index": 2,
       name: '2013',
       type: 'column',
       data: $("#annual2013").data('lst2013'),
-    },
-     {
+    } ,
+    {
       "index": 1,
       name: '2012',
       type: 'column',
       data: $("#annual2012").data('lst2012'),
-    } ]
+    },
+     {
+      "index": 0,
+      name: '2011',
+      type: 'column',
+      data: $("#annual2011").data('lst2011'),
+    },
+    
+
+
+    ]
   });
 });
+}
