@@ -4,36 +4,36 @@ $(document).ready(function() {
     });
 })
 
-Highcharts.setOptions({
-    lang: {
-        months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 
-            'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-        weekdays: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
-    }
-});
-
-var myData2011  = $("#annual2011").data('lst2011');
-var myTotal2011 = 0;  //Variable to hold your total
-for(var i=0, len=myData2011.length; i<len; i++){
-    myTotal2011 += myData2011[i][1];  //Iterate over your first array and then grab the second element add the values up
-}
-var mean2011 = myTotal2011/myData2011.length
-
-var myData2012  = $("#annual2012").data('lst2012');
-var myTotal2012 = 0;  //Variable to hold your total
-for(var i=0, len=myData2012.length; i<len; i++){
-    myTotal2012 += myData2012[i][1];  //Iterate over your first array and then grab the second element add the values up
-}
-var mean2012 = myTotal2012/myData2012.length
-
-var myData2013  = $("#annual2013").data('lst2013');
-var myTotal2013 = 0;  //Variable to hold your total
-for(var i=0, len=myData2013.length; i<len; i++){
-    myTotal2013 += myData2013[i][1];  //Iterate over your first array and then grab the second element add the values up
-}
-var mean2013 = myTotal2013/myData2013.length
+// Highcharts.setOptions({
+//     lang: {
+//         months: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 
+//             'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+//         weekdays: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
+//     }
+// });
 
 if(document.getElementById('container')){
+  <% for i in [2010,2011,2012,2013] %>
+    var myData<%=i%>  = $("#annual<%=i%>").data('lst<%=i%>');
+    var myTotal<%=i%> = 0; 
+    for(var n=0, len=myData<%=i%>.length; n<len; n++){
+      myTotal<%=i%> += myData<%=i%>[n][1]; 
+    }
+     var mean<%=i%> = myTotal<%=i%>/myData<%=i%>.length
+  <% end %>
+
+// colors: [
+//    '#2f7ed8', x
+//    '#0d233a', x
+//    '#8bbc21', x
+//    '#910000', x
+//    '#1aadce', 
+//    '#492970',
+//    '#f28f43', 
+//    '#77a1e5', 
+//    '#c42525', 
+//    '#a6c96a'
+// ]
  $(function () {
   new Highcharts.Chart({
    
@@ -43,12 +43,24 @@ if(document.getElementById('container')){
             text: 'avec la moyenne ',
         },
      xAxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                categories: ['Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin',
+                    'Juil', 'Aout', 'Sep', 'Oct', 'Nov', 'Dec']
             },  
     yAxis: {
       title: { text: 'Euros'},
-       plotLines: [{
+       plotLines: [
+                {
+                color:  '#910000', 
+                width: 2,
+                value: mean2010,
+                label: {
+                    text: '2010',
+                    align: 'right',
+                    color:  '#910000', 
+                    x: 0
+                }        
+            },
+                {
                 color:  '#8bbc21', 
                 width: 2,
                 value: mean2011,
@@ -86,31 +98,38 @@ if(document.getElementById('container')){
     },
     series: [
     {
-      "index": 3,
+      "index": 4,
       name: '2014',
       type: 'column',
       data: $("#annual2014").data('lst2014'),
     },
      {
-      "index": 2,
+      "index": 3,
       name: '2013',
       type: 'column',
       color: '#0d233a', 
       data: $("#annual2013").data('lst2013'),
     } ,
     {
-      "index": 1,
+      "index": 2,
       name: '2012',
       type: 'column',
       color: '#2f7ed8', 
       data: $("#annual2012").data('lst2012'),
     },
      {
-      "index": 0,
+      "index": 1,
       name: '2011',
       type: 'column',
       color:  '#8bbc21', 
       data: $("#annual2011").data('lst2011'),
+    },
+    {
+      "index": 0,
+      name: '2010',
+      type: 'column',
+      color:  '#910000', 
+      data: $("#annual2010").data('lst2010'),
     },
     ]
   });
