@@ -6,12 +6,13 @@ class ComptesController < ApplicationController
     @liste_virt = Compte.where(true).each.map{|cp| cp.valeur.to_f }
     # @liste2013 = Compte.where(mois: ("2013-01-01".."2013-12-31")).each.map{|cp| [cp.mois.to_time.to_i*1000, cp.valeur.to_f]}
     # @liste2012 = Compte.where(mois: ("2012-01-01".."2012-12-31")).each.map{|cp| [cp.mois.to_time.to_i*1000, cp.valeur.to_f]}
-    @liste2014 = Compte.where(mois: ("2014-01-01".."2014-12-31")).each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
-    @liste2013 = Compte.where(mois: ("2013-01-01".."2013-12-31")).each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
-    @liste2012 = Compte.where(mois: ("2012-01-01".."2012-12-31")).each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
-    @liste2011 = Compte.where(mois: ("2011-01-01".."2011-12-31")).each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
-    @liste2010 = Compte.where(mois: ("2010-01-01".."2010-12-31")).each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
-  end
+    @liste2014  = Compte.where(mois: ("2014-01-01".."2014-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
+    @liste2013  = Compte.where(mois: ("2013-01-01".."2013-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
+    @liste2012  = Compte.where(mois: ("2012-01-01".."2012-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
+    @liste2011  = Compte.where(mois: ("2011-01-01".."2011-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
+    @liste2010  = Compte.where(mois: ("2010-01-01".."2010-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
+    @ca_cabinet = Compte.where(nature: "CA_annuel").each.map{|cp| [cp.mois.to_time.to_i*1000, cp.valeur.to_f]}
+ end
 
   def list
     #TODO: sort by date

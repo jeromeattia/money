@@ -12,6 +12,7 @@ gem 'thin'
 gem 'gravatar_image_tag'
 gem 'bcrypt-ruby'  , '~> 3.0.0'
 gem "highcharts-rails", "~> 3.0.0"
+gem 'whenever' , require:  false
 
 group :production do
   gem 'unicorn'

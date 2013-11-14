@@ -1,25 +1,34 @@
 .row
   .small-4.offset-1.columns
-    = form_for @compte  do |f|
-      - if @compte.errors.any?
-        #error_explanation
-          %h2
-            = pluralize(@compte.errors.count, "error")
-            empéchent de sauvegarder:
-          %ul
-            - @compte.errors.full_messages.each do |msg|
-              %li= msg
-      .field
-        = f.label :mois
-        %br/
-        = f.text_field :mois, :data_date_format =>"mm/dd/yy", :id=>"date-select1"
-      .field
-        = f.label :nom
-        %br/
-        = f.text_field :nom, :value => "Attia"
-      .field
-        = f.label :valeur
-        %br/
-        = f.text_field :valeur
-      .actions
-        = f.submit "Ajouter", :class => "button"
+    #form_for_comptes
+      = form_for @compte,:html => {:class => "custom" } do |f|
+        - if @compte.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(@compte.errors.count, "error")
+              empéchent de sauvegarder:
+            %ul
+              - @compte.errors.full_messages.each do |msg|
+                %li= msg
+        .row
+          .small-3.columns
+            %label.right.inline{for: "right-label"}= f.label :mois
+          .small-9.columns  
+            #right-label= f.text_field :mois, :data_date_format =>"mm/dd/yy", :id=>"date-select1"
+        .row
+          .small-3.columns
+            %label.right.inline{for: "right-label"}= f.label :nom
+          .small-9.columns  
+            #right-label= f.select(:nom,["Attia","Badji","Boutelant","Girard","Veyrac","Cabinet"])
+        .row
+          .small-3.columns
+            %label.right.inline{for: "right-label"}= f.label :nature
+          .small-9.columns  
+            #right-label= f.select :nature,["virement_mensuel","CA_annuel"] 
+        .row
+          .small-3.columns
+            %label.right.inline{for: "right-label"}= f.label :valeur
+          .small-9.columns  
+            #right-label= f.text_field :valeur
+        .actions
+          = f.submit "Ajouter", :class => "button"
