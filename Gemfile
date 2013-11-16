@@ -47,3 +47,4 @@ group :test do
   gem "minitest-reporters"
   gem "spork-rails"
 end
+gem 'rails_12factor'

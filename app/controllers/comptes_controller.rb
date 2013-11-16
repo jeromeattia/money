@@ -11,7 +11,7 @@ class ComptesController < ApplicationController
     @liste2012  = Compte.where(mois: ("2012-01-01".."2012-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
     @liste2011  = Compte.where(mois: ("2011-01-01".."2011-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
     @liste2010  = Compte.where(mois: ("2010-01-01".."2010-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
-    @ca_cabinet = Compte.where(nature: "CA_annuel").each.map{|cp| [cp.mois.to_time.to_i*1000, cp.valeur.to_f]}
+    @ca_cabinet = Compte.where(nature: "CA_annuel").order("mois ASC").each.map{|cp| [cp.mois.to_time.to_i*1000, cp.valeur.to_f]}
  end
 
   def list
