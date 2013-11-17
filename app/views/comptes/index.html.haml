@@ -11,7 +11,7 @@
             = content_tag :div, "", id: "annual2012" ,data: {lst2012: @liste2012 }
             = content_tag :div, "", id: "annual2011" ,data: {lst2011: @liste2011 }
             = content_tag :div, "", id: "annual2010" ,data: {lst2010: @liste2010 }
-            #container{style: "width:100%; height:500px;"}
+            #container
     %section
       %p.title{"data-section-title" => ""}
         %a{href: "#panel2"}
@@ -22,7 +22,7 @@
             = content_tag :div, "", id: "ca_cabinet" ,data: {ca: @ca_cabinet }
             = content_tag :div, "", id: "years" ,data: {years: @years.flatten}
             = content_tag :div, "", id: "charges_cabinet_annuel" ,data: {ch: @charges_cabinet  }
-            #container2{style: "width:100%; height:500px;"}
+            #container2
     %section
       %p.title{"data-section-title" => ""}
         %a{href: "#panel3"}
@@ -31,4 +31,4 @@
         .row
           .small-11.offset-1.columns
             = content_tag :div, "", id: "ratio" ,data: {ratio: @ratio }
-            #container3{style: "width:100%; height:500px;"}
+            #container3
