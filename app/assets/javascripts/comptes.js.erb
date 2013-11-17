@@ -128,14 +128,14 @@ if(document.getElementById('graphs')){
 }
 
 if(document.getElementById('graphs')){
-   var d = $("#ca_cabinet").data('ca');
-   var arr_year = [];
-   var arr_data =[];
-   for (var n=0, len = d.length ;n < len; n++) {
-       var date = new Date(d[n][0]);
-       arr_year.push(date.getFullYear()); 
-       arr_data.push(d[n][1]);
-   }
+   // var d = $("#ca_cabinet").data('ca');
+   // var arr_year = [];
+   // var arr_data =[];
+   // for (var n=0, len = d.length ;n < len; n++) {
+   //     var date = new Date(d[n][0]);
+   //     arr_year.push(date.getFullYear()); 
+   //     arr_data.push(d[n][1]);
+   // }
    
 
    $(function () {
@@ -146,12 +146,41 @@ if(document.getElementById('graphs')){
             },
     title: { text: 'Chiffre d\'affaire annuel du cabinet' }, 
     xAxis: {
-               categories: arr_year,
-            },  
+               categories: $("#years").data('years'),
+            }, 
+    plotOptions: {
+      series: {
+        stacking: 'normal'
+      }
+      }, 
          series: [{
-            data: arr_data,
+            name: "ca",
+            data: $("#ca_cabinet").data('ca'),
+        },
+        {
+          name: "charges",
+          color:'#910000',
+          data: $("#charges_cabinet_annuel").data('ch'),
         }]
-
+  })
+});
+   $(function () {
+     new Highcharts.Chart({
+    chart: {  
+              renderTo: 'container3' ,
+              type: 'column',
+            },
+    title: { text: 'Ratio charges sur chiffre d\'affaire (en %)' }, 
+    xAxis: {
+               categories: $("#years").data('years'),
+            }, 
+    plotOptions: {
+      series: { }
+      }, 
+         series: [{
+            name: "ratio",
+            data: $("#ratio").data('ratio'),
+        }]
   })
 });
 }   

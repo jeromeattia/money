@@ -11,8 +11,22 @@ class ComptesController < ApplicationController
     @liste2012  = Compte.where(mois: ("2012-01-01".."2012-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
     @liste2011  = Compte.where(mois: ("2011-01-01".."2011-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
     @liste2010  = Compte.where(mois: ("2010-01-01".."2010-12-31"), nature: "virement_mensuel").each.map{|cp| [cp.mois.strftime("%b"), cp.valeur.to_f]}
-    @ca_cabinet = Compte.where(nature: "CA_annuel").order("mois ASC").each.map{|cp| [cp.mois.to_time.to_i*1000, cp.valeur.to_f]}
- end
+    @ca_cabinet = Compte.where(nature: "CA_annuel").order("mois ASC").each.map{|cp| [cp.valeur.to_f]}
+    @years      = Compte.where(nature: "CA_annuel").order("mois ASC").each.map{|cp| [cp.mois.strftime("%Y")]}.flatten 
+    @charges_cabinet = []
+    @ratio = []
+    @years.each do |i|
+      ca      = Compte.where("nature = 'CA_annuel' and EXTRACT(YEAR FROM mois) = '#{i}' " ).each.map{|cp| [cp.valeur.to_f]}
+      charges = Compte.where("nature = 'charges_cabinet_annuel' and EXTRACT(YEAR FROM mois) = '#{i}'").each.map{|cp| [ - cp.valeur.to_f]}
+      if charges.empty?
+        @charges_cabinet << 0
+        @ratio           << 0
+      else
+        @charges_cabinet << charges.flatten[0]
+        @ratio           << (-(charges.flatten[0]/ca.flatten[0])*100).round(1) 
+      end
+    end
+   end
 
   def list
     #TODO: sort by date

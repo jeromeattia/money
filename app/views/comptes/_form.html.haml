@@ -19,12 +19,12 @@
           .small-3.columns
             %label.right.inline{for: "right-label"}= f.label :nom
           .small-9.columns  
-            #right-label= f.select(:nom,["Attia","Badji","Boutelant","Girard","Veyrac","Cabinet"])
+            #right-label= f.select(:nom,["Attia","Badji","Berthet","Boutelant","Gattaz","Girard","Huraux","Laurent","Mahiou","Maze","Veyrac","Cabinet"])
         .row
           .small-3.columns
             %label.right.inline{for: "right-label"}= f.label :nature
           .small-9.columns  
-            #right-label= f.select :nature,["virement_mensuel","CA_annuel"] 
+            #right-label= f.select :nature,["virement_mensuel","CA_annuel","charges_cabinet_annuel"],{ include_blank: true } 
         .row
           .small-3.columns
             %label.right.inline{for: "right-label"}= f.label :valeur
