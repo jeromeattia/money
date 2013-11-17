@@ -127,7 +127,7 @@ if(document.getElementById('graphs')){
 });
 }
 
-if(document.getElementById('graphs')){
+if(document.getElementById('container2')){
  
    $(function () {
      new Highcharts.Chart({
@@ -135,7 +135,7 @@ if(document.getElementById('graphs')){
               renderTo: 'container2' ,
               type: 'column',
             },
-    title: { text: 'Chiffre d\'affaire annuel du cabinet' }, 
+    title: { text: 'Chiffre d\'affaire annuel du cabinet avec les charges en mirroir' }, 
     xAxis: {
                categories: $("#years").data('years'),
             }, 
@@ -172,7 +172,7 @@ if(document.getElementById('container3')){
       series: { }
       }, 
          series: [{
-            name: "ratio",
+            name: "ratio (%)",
             data: $("#ratio").data('ratio'),
         }]
   })

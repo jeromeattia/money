@@ -1,12 +1,12 @@
 #graphs
-  .section-container.auto{"data-section" => ""}
+  .section-container.tabs{"data-section" => "tabs"}
     %section.active
       %p.title{"data-section-title" => ""}
         %a{href: "#panel1"} 
           %b Virement mensuels
       .content{"data-section-content" => ""}
         .row
-          .small-11.offset-1.columns
+          .small-11.columns
             = content_tag :div, "", id: "annual2013" ,data: {lst2013: @liste2013 }
             = content_tag :div, "", id: "annual2012" ,data: {lst2012: @liste2012 }
             = content_tag :div, "", id: "annual2011" ,data: {lst2011: @liste2011 }
@@ -18,7 +18,7 @@
           %b Chiffre d'affaire
       .content{"data-section-content" => ""}
         .row
-          .small-11.offset-1.columns
+          .small-11.columns
             = content_tag :div, "", id: "ca_cabinet" ,data: {ca: @ca_cabinet }
             = content_tag :div, "", id: "years" ,data: {years: @years.flatten}
             = content_tag :div, "", id: "charges_cabinet_annuel" ,data: {ch: @charges_cabinet  }
@@ -29,6 +29,6 @@
           %b Ratio charges / CA
       .content{"data-section-content" => ""}
         .row
-          .small-11.offset-1.columns
+          .small-11.columns
             = content_tag :div, "", id: "ratio" ,data: {ratio: @ratio }
             #container3
